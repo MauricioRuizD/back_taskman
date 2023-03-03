@@ -1,5 +1,5 @@
 import { Document } from "mongoose";
-import { ITimestamp, IUserIdentityInfo } from "../interfaces";
+import { ITimestamp, IUserIdentityInfo } from "../../interfaces";
 import { UserRole } from "../../enums";
 
 export interface UserDocument extends IUserIdentityInfo, Document, ITimestamp {

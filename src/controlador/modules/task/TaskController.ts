@@ -1,9 +1,7 @@
-import { TasksService } from './TasksService';
-import {Controller, Get, MakeBadRequest, Post, Put} from "componente-base";
-import {NextFunction} from "express";
-import {Request, Response} from 'express'
+import { TasksService } from './TaskService';
+import { NextFunction } from "express";
+import { Request, Response } from 'express'
 
-@Controller('/tasks')
 export class TasksController {
     private tasksService: TasksService;
 
@@ -14,16 +12,15 @@ export class TasksController {
         this.tasksService = new TasksService()
     }
 
-    @Post('/')
     async Create(request: Request, response: Response, next: NextFunction) {
         try {
-            const {theme, description, priority, status, assessment, managers} = request.body
+            const { start, priority, name, detail, estimatedTime, assignedTo, status } = request.body
 
-            if(!theme || !description || !priority || !status || !assessment || !managers) {
-                return response.status(400).json(MakeBadRequest(`Invalid parameters`));
+            if(!start || !priority || !name || !detail || !estimatedTime || !assignedTo || !status) {
+                return response.status(400).json('Invalid parameters');
             }
 
-            await this.tasksService.createTask(theme, description, priority, status, assessment, managers)
+            await this.tasksService.createTask( start, priority, name, detail, estimatedTime, assignedTo, status )
                 .then(task => response.json(task))
                 .catch(error => {
                     console.error("[USER CONTROLLER][ERROR]", error)
@@ -34,7 +31,6 @@ export class TasksController {
         }
     }
 
-    @Get('/consultAllTasks')
     async consultAllTasks(request: Request, response: Response, next: NextFunction) {
         try {
             await this.tasksService.consultAllTasks()
