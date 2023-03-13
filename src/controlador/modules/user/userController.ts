@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { User } from '../../../mongodb/models';
+import { User } from '../../../nodetypes_tareas/';
 import { UserService } from "./UserService";
 import axios from 'axios';
 

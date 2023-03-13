@@ -1,5 +1,5 @@
 import { UserController } from './user/UserController'
-import { TaskController } from './task/TaskController'
+import { TasksController } from './task/TaskController'
 
 export const Controllers = [
   UserController,

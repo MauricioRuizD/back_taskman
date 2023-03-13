@@ -1,6 +1,6 @@
 import { Document } from "mongoose";
 import { ITimestamp, IUserIdentityInfo } from "../../interfaces";
-import { UserRole } from "../../enums";
+import { UserRole } from "../../../controlador/enums";
 
 export interface UserDocument extends IUserIdentityInfo, Document, ITimestamp {
     password: string

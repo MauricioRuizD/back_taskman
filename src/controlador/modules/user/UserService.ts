@@ -1,6 +1,6 @@
-import { User } from "../../../mongodb/models";
-import { UserDocument } from "../../../mongodb/documents";
-import { UserRole } from "../../../enums";
+import { User } from "../../../nodetypes_tareas/mongodb";
+import { UserDocument } from "../../../nodetypes_tareas/mongodb";
+import { UserRole } from "../../enums";
 
 /**
  * @description
