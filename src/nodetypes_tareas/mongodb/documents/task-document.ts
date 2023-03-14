@@ -2,7 +2,7 @@ import { Document } from "mongoose";
 import { ITimestamp } from "../../interfaces";
 import { StatusTask, PriorityTask } from "../../../controlador/enums";
 
-export interface TaskDocument extends Document, ITimestamp {
+export interface TasksDocument extends Document, ITimestamp {
     start: Date,
     priority: PriorityTask,
     name: string,

@@ -1,9 +1,9 @@
 import { model, Schema } from 'mongoose';
-import { TaskDocument } from "../documents";
+import { TasksDocument } from "../documents";
 
 const {Types} = Schema;
 
-const TaskSchema = new Schema(
+const TasksSchema = new Schema(
     {
 
         start: {
@@ -44,4 +44,4 @@ const TaskSchema = new Schema(
     }
 );
 
-export const Task = model<TaskDocument>("Task", TaskSchema);
+export const Tasks = model<TasksDocument>("Tasks", TasksSchema);

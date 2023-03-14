@@ -1,7 +1,2 @@
-import { UserController } from './user/UserController'
-import { TasksController } from './task/TaskController'
-
-export const Controllers = [
-  UserController,
-  TasksController
-]
+export { UserController } from './user/UserController'
+export { tasksController } from './tasks/TasksController'

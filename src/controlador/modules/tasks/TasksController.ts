@@ -1,18 +1,15 @@
-import { TasksService } from './TaskService';
+import { TasksService } from './TasksService';
 import { NextFunction } from "express";
 import { Request, Response } from 'express'
 
-export class TasksController {
+class TasksController {
     private tasksService: TasksService;
 
-    /**
-     * Creates an instance of UserController.
-     */
     constructor() {
-        this.tasksService = new TasksService()
+        this.tasksService = new TasksService();
     }
 
-    async Create(request: Request, response: Response, next: NextFunction) {
+    /*async Create(request: Request, response: Response, next: NextFunction) {
         try {
             const { start, priority, name, detail, estimatedTime, assignedTo, status } = request.body
 
@@ -21,7 +18,7 @@ export class TasksController {
             }
 
             await this.tasksService.createTask( start, priority, name, detail, estimatedTime, assignedTo, status )
-                .then(task => response.json(task))
+                .then(tasks => response.json(tasks))
                 .catch(error => {
                     console.error("[USER CONTROLLER][ERROR]", error)
                     response.status(500).json(error)
@@ -29,14 +26,15 @@ export class TasksController {
         } catch (error) {
             next(error)
         }
-    }
+    }*/
 
-    async consultAllTasks(request: Request, response: Response, next: NextFunction) {
+     consultAllTasks = async (request: Request, response: Response, next: NextFunction): Promise<void> => {
+        
         try {
             await this.tasksService.consultAllTasks()
-                .then(task => response.json(task))
+                .then(tasks => response.json(tasks))
                 .catch(error => {
-                    console.error("[USER CONTROLLER][ERROR]", error)
+                    console.error("[TASK CONTROLLER][ERROR]", error)
                     response.status(500).json(error)
                 })
         } catch (error) {
@@ -44,3 +42,5 @@ export class TasksController {
         }
     }
 }
+
+export const tasksController = new TasksController();
