@@ -1,8 +1,11 @@
 import express from "express";
 import mongoose, { ConnectOptions } from "mongoose";
-import morgan from "morgan";
+//import morgan from "morgan";
 
-import TasksRoutes from './src/nodetypes_tareas/routes/tasks';
+var morgan = require('morgan');
+const cors = require('cors');
+
+import TasksRoutes from './src/nodetypes_tareas/routes/api/tasks';
 
 const app = express();
 
@@ -10,6 +13,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("tiny"));
 app.set('port', process.env.PORT || 3000);
+//app.use(morgan('dev'));
+app.use(cors());
 
 mongoose.connect("mongodb://localhost/taskmanager", {
   useNewUrlParser: true,
@@ -29,4 +34,4 @@ app.listen(app.get('port'), () => {
 });
 
 // Routes
-app.use('/tasks', TasksRoutes);
+app.use('/api/tasks', TasksRoutes);

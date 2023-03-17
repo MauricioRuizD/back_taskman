@@ -28,7 +28,7 @@ class TasksController {
         }
     }*/
 
-     consultAllTasks = async (request: Request, response: Response, next: NextFunction): Promise<void> => {
+    consultAllTasks = async (request: Request, response: Response, next: NextFunction): Promise<void> => {
         
         try {
             await this.tasksService.consultAllTasks()

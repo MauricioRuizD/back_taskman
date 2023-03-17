@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { tasksController } from '../../controlador/modules';
+import { tasksController } from '../../../controlador/modules';
 
 class TasksRoutes {
 

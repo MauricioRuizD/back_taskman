@@ -11,7 +11,6 @@ export class TasksService {
     }*/
 
     async consultAllTasks() {
-        
         const tasks = await Tasks.find();
         return tasks
     }

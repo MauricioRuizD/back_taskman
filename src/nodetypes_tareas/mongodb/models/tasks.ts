@@ -9,6 +9,9 @@ const TasksSchema = new Schema(
         start: {
             type: Types.Date,
             required: true,
+            default: Date.now,
+            get: (v: Date) => v.toISOString(),
+            set: (v: string) => new Date(v) 
         },
         priority: {
             type: Types.String,
@@ -27,12 +30,12 @@ const TasksSchema = new Schema(
             type: Types.Number,
             required: true,
         },
-        assignedTo:[
+        /*assignedTo:[
             {
                 type: Types.ObjectId,
                 ref: 'User'
             }
-        ],
+        ],*/
         status: {
             type: Types.String,
             enum: ['OPEN', 'DONE', 'REMOVED'],
@@ -43,5 +46,9 @@ const TasksSchema = new Schema(
         timestamps: true,
     }
 );
+
+TasksSchema.methods.formatStartDate = function() {
+    return this.start.toLocaleDateString('es-ES');
+  };
 
 export const Tasks = model<TasksDocument>("Tasks", TasksSchema);
